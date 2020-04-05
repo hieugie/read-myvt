@@ -1,0 +1,7 @@
+{
+    "http://localhost:4200/myviettel.php/loginV2": {
+        "target": "https://apivtp.vietteltelecom.vn:6768/",
+        "secure": false,
+        "loglevel": "debug"
+    }
+}
