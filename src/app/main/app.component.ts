@@ -40,7 +40,7 @@ export class AppComponent {
     this.myvtService.checkLogin(item).subscribe(res => {
       console.log(res);
       if (res.body.errorCode !== '0') {
-        if (res.body.errorCode === '2' || res.body.errorCode === 2) {
+        if (res.body.errorCode === '2' || res.body.errorCode === 2 || res.body.errorCode === '1' || res.body.errorCode === 1) {
           item.status = 2;
         } else if (res.body.errorCode === '-4') {
           item.status = -4;
@@ -59,9 +59,23 @@ export class AppComponent {
   checkLoginAll() {
     this.dataSourceClone = null;
     this.isCheck = true;
-    this.dataSource.forEach(item => {
-      this.checkLogin(item);
-    });
+
+    let i = 0;
+    this.loop(i);
+  }
+
+  loop(i) {
+    setTimeout(() => {
+      console.log(i);
+      this.checkLogin(this.dataSource[i]);
+      i++;
+      if (i < this.dataSource.length) {
+        this.loop(i);
+      }
+    }, 15000);
+    // this.dataSource.forEach(item => {
+    //   this.checkLogin(item);
+    // });
   }
 
   filterResult() {
